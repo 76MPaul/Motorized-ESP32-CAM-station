@@ -1,0 +1,619 @@
+[
+  {
+    "id": "d4704bfb1d2ff542",
+    "type": "tab",
+    "label": "Flow 1",
+    "disabled": false,
+    "info": ""
+  },
+  {
+    "id": "e07804820680845d",
+    "type": "api-call-service",
+    "z": "d4704bfb1d2ff542",
+    "name": "",
+    "server": "8736b48c.d62a68",
+    "version": 3,
+    "debugenabled": false,
+    "service_domain": "notify",
+    "service": "*******",
+    "entityId": "",
+    "data": "",
+    "dataType": "jsonata",
+    "mergecontext": "",
+    "mustacheAltTags": false,
+    "outputProperties": [
+      {
+        "property": "message",
+        "propertyType": "msg",
+        "value": "Notification mouvement caméra 1",
+        "valueType": "str"
+      },
+      {
+        "property": "title",
+        "propertyType": "msg",
+        "value": "Notification mouvement",
+        "valueType": "str"
+      }
+    ],
+    "queue": "all",
+    "x": 1240,
+    "y": 780,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "edf6f464e4e6145e",
+    "type": "ping",
+    "z": "d4704bfb1d2ff542",
+    "protocol": "Automatic",
+    "mode": "timed",
+    "name": "nom_telephone",
+    "host": "ip",
+    "timer": "20",
+    "inputs": 0,
+    "x": 310,
+    "y": 380,
+    "wires": [
+      [
+        "3003db8b63a31747"
+      ]
+    ]
+  },
+  {
+    "id": "c318c43bc98f85e1",
+    "type": "ping",
+    "z": "d4704bfb1d2ff542",
+    "protocol": "Automatic",
+    "mode": "timed",
+    "name": "nom_telephone",
+    "host": "ip",
+    "timer": "500",
+    "inputs": 0,
+    "x": 320,
+    "y": 440,
+    "wires": [
+      [
+        "df68847ecf8904e0"
+      ]
+    ]
+  },
+  {
+    "id": "3003db8b63a31747",
+    "type": "switch",
+    "z": "d4704bfb1d2ff542",
+    "name": "",
+    "property": "payload",
+    "propertyType": "msg",
+    "rules": [
+      {
+        "t": "gt",
+        "v": "0",
+        "vt": "num"
+      },
+      {
+        "t": "false"
+      }
+    ],
+    "checkall": "true",
+    "repair": false,
+    "outputs": 2,
+    "x": 470,
+    "y": 380,
+    "wires": [
+      [
+        "c8545b903f5d3abb",
+        "02855855fd9985d5",
+        "1e59940973b5d03c"
+      ],
+      [
+        "e55daa3a0f1b83b8"
+      ]
+    ]
+  },
+  {
+    "id": "c8545b903f5d3abb",
+    "type": "api-call-service",
+    "z": "d4704bfb1d2ff542",
+    "name": "",
+    "server": "8736b48c.d62a68",
+    "version": 3,
+    "debugenabled": false,
+    "service_domain": "input_boolean",
+    "service": "turn_on",
+    "entityId": "input_boolean.presence",
+    "data": "",
+    "dataType": "jsonata",
+    "mergecontext": "",
+    "mustacheAltTags": false,
+    "outputProperties": [],
+    "queue": "none",
+    "x": 740,
+    "y": 380,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "0796a2865f8d7e00",
+    "type": "api-call-service",
+    "z": "d4704bfb1d2ff542",
+    "name": "",
+    "server": "8736b48c.d62a68",
+    "version": 3,
+    "debugenabled": false,
+    "service_domain": "input_boolean",
+    "service": "turn_off",
+    "entityId": "input_boolean.presence",
+    "data": "",
+    "dataType": "jsonata",
+    "mergecontext": "",
+    "mustacheAltTags": false,
+    "outputProperties": [],
+    "queue": "none",
+    "x": 940,
+    "y": 440,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "4a3fd6ca0ecbee3b",
+    "type": "http request",
+    "z": "d4704bfb1d2ff542",
+    "name": "Request start",
+    "method": "GET",
+    "ret": "txt",
+    "paytoqs": "ignore",
+    "url": "http://192.168.1.14:7999/1/detection/start",
+    "tls": "",
+    "persist": false,
+    "proxy": "",
+    "authType": "",
+    "x": 890,
+    "y": 500,
+    "wires": [
+      [
+        "13b03c86155add63"
+      ]
+    ]
+  },
+  {
+    "id": "02855855fd9985d5",
+    "type": "http request",
+    "z": "d4704bfb1d2ff542",
+    "name": "Request pause",
+    "method": "GET",
+    "ret": "txt",
+    "paytoqs": "ignore",
+    "url": "http://192.168.1.14:7999/1/detection/pause",
+    "tls": "",
+    "persist": false,
+    "proxy": "",
+    "authType": "",
+    "x": 700,
+    "y": 280,
+    "wires": [
+      [
+        "13b03c86155add63"
+      ]
+    ]
+  },
+  {
+    "id": "a95dd510bfb05434",
+    "type": "api-call-service",
+    "z": "d4704bfb1d2ff542",
+    "name": "",
+    "server": "8736b48c.d62a68",
+    "version": 3,
+    "debugenabled": false,
+    "service_domain": "notify",
+    "service": "mobile_app",
+    "entityId": "",
+    "data": "",
+    "dataType": "jsonata",
+    "mergecontext": "",
+    "mustacheAltTags": false,
+    "outputProperties": [
+      {
+        "property": "message",
+        "propertyType": "msg",
+        "value": "Notification mouvement caméra 1 camdetecon1 notif",
+        "valueType": "str"
+      },
+      {
+        "property": "title",
+        "propertyType": "msg",
+        "value": "Notification mouvement",
+        "valueType": "str"
+      }
+    ],
+    "queue": "all",
+    "x": 1240,
+    "y": 820,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "13b03c86155add63",
+    "type": "debug",
+    "z": "d4704bfb1d2ff542",
+    "name": "Test 1",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 1270,
+    "y": 420,
+    "wires": []
+  },
+  {
+    "id": "df68847ecf8904e0",
+    "type": "switch",
+    "z": "d4704bfb1d2ff542",
+    "name": "",
+    "property": "payload",
+    "propertyType": "msg",
+    "rules": [
+      {
+        "t": "gt",
+        "v": "0",
+        "vt": "num"
+      },
+      {
+        "t": "false"
+      }
+    ],
+    "checkall": "true",
+    "repair": false,
+    "outputs": 2,
+    "x": 470,
+    "y": 440,
+    "wires": [
+      [
+        "1e59940973b5d03c",
+        "c8545b903f5d3abb",
+        "02855855fd9985d5"
+      ],
+      [
+        "574bc3037ce9b112"
+      ]
+    ]
+  },
+  {
+    "id": "e55daa3a0f1b83b8",
+    "type": "delay",
+    "z": "d4704bfb1d2ff542",
+    "name": "",
+    "pauseType": "rate",
+    "timeout": "5",
+    "timeoutUnits": "minutes",
+    "rate": "1",
+    "nbRateUnits": "10",
+    "rateUnits": "minute",
+    "randomFirst": "1",
+    "randomLast": "5",
+    "randomUnits": "seconds",
+    "drop": true,
+    "allowrate": false,
+    "x": 680,
+    "y": 460,
+    "wires": [
+      [
+        "0796a2865f8d7e00",
+        "4a3fd6ca0ecbee3b",
+        "0bc5fd390363eecd"
+      ]
+    ]
+  },
+  {
+    "id": "574bc3037ce9b112",
+    "type": "delay",
+    "z": "d4704bfb1d2ff542",
+    "name": "",
+    "pauseType": "rate",
+    "timeout": "5",
+    "timeoutUnits": "minutes",
+    "rate": "1",
+    "nbRateUnits": "10",
+    "rateUnits": "minute",
+    "randomFirst": "1",
+    "randomLast": "5",
+    "randomUnits": "seconds",
+    "drop": true,
+    "allowrate": false,
+    "x": 680,
+    "y": 500,
+    "wires": [
+      [
+        "0796a2865f8d7e00",
+        "0bc5fd390363eecd",
+        "4a3fd6ca0ecbee3b"
+      ]
+    ]
+  },
+  {
+    "id": "1e59940973b5d03c",
+    "type": "http request",
+    "z": "d4704bfb1d2ff542",
+    "name": "Request pause",
+    "method": "GET",
+    "ret": "txt",
+    "paytoqs": "ignore",
+    "url": "http://192.168.1.14:7999/2/detection/pause",
+    "tls": "",
+    "persist": false,
+    "proxy": "",
+    "authType": "",
+    "x": 700,
+    "y": 320,
+    "wires": [
+      [
+        "13b03c86155add63"
+      ]
+    ]
+  },
+  {
+    "id": "0bc5fd390363eecd",
+    "type": "http request",
+    "z": "d4704bfb1d2ff542",
+    "name": "Request start",
+    "method": "GET",
+    "ret": "txt",
+    "paytoqs": "ignore",
+    "url": "http://192.168.1.14:7999/2/detection/start",
+    "tls": "",
+    "persist": false,
+    "proxy": "",
+    "authType": "",
+    "x": 890,
+    "y": 540,
+    "wires": [
+      [
+        "13b03c86155add63"
+      ]
+    ]
+  },
+  {
+    "id": "326be5e099b1016b",
+    "type": "http in",
+    "z": "d4704bfb1d2ff542",
+    "name": "webhook",
+    "url": "webhook",
+    "method": "post",
+    "upload": false,
+    "swaggerDoc": "",
+    "x": 460,
+    "y": 660,
+    "wires": [
+      [
+        "87987d7d4fa9fc4d",
+        "11aa1c455e093cfd",
+        "0d9184b5061bde80"
+      ]
+    ]
+  },
+  {
+    "id": "87987d7d4fa9fc4d",
+    "type": "http response",
+    "z": "d4704bfb1d2ff542",
+    "name": "ok",
+    "statusCode": "201",
+    "headers": {},
+    "x": 650,
+    "y": 660,
+    "wires": []
+  },
+  {
+    "id": "11aa1c455e093cfd",
+    "type": "debug",
+    "z": "d4704bfb1d2ff542",
+    "name": "Test 3",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 650,
+    "y": 740,
+    "wires": []
+  },
+  {
+    "id": "4a0c6d39bbc0729f",
+    "type": "api-call-service",
+    "z": "d4704bfb1d2ff542",
+    "name": "",
+    "server": "8736b48c.d62a68",
+    "version": 3,
+    "debugenabled": false,
+    "service_domain": "input_boolean",
+    "service": "turn_on",
+    "entityId": "input_boolean.cameramotion1",
+    "data": "",
+    "dataType": "jsonata",
+    "mergecontext": "",
+    "mustacheAltTags": false,
+    "outputProperties": [],
+    "queue": "none",
+    "x": 920,
+    "y": 680,
+    "wires": [
+      [
+        "29bd07b7e17a2420",
+        "e07804820680845d"
+      ]
+    ]
+  },
+  {
+    "id": "0d9184b5061bde80",
+    "type": "switch",
+    "z": "d4704bfb1d2ff542",
+    "name": "",
+    "property": "payload",
+    "propertyType": "msg",
+    "rules": [
+      {
+        "t": "eq",
+        "v": "1",
+        "vt": "str"
+      },
+      {
+        "t": "eq",
+        "v": "2",
+        "vt": "str"
+      }
+    ],
+    "checkall": "true",
+    "repair": false,
+    "outputs": 2,
+    "x": 650,
+    "y": 700,
+    "wires": [
+      [
+        "4a0c6d39bbc0729f"
+      ],
+      [
+        "262b1081712c5941"
+      ]
+    ]
+  },
+  {
+    "id": "262b1081712c5941",
+    "type": "api-call-service",
+    "z": "d4704bfb1d2ff542",
+    "name": "",
+    "server": "8736b48c.d62a68",
+    "version": 3,
+    "debugenabled": false,
+    "service_domain": "input_boolean",
+    "service": "turn_on",
+    "entityId": "input_boolean.cameramotion2",
+    "data": "",
+    "dataType": "jsonata",
+    "mergecontext": "",
+    "mustacheAltTags": false,
+    "outputProperties": [],
+    "queue": "none",
+    "x": 920,
+    "y": 720,
+    "wires": [
+      [
+        "d85d33990db3a442",
+        "a95dd510bfb05434"
+      ]
+    ]
+  },
+  {
+    "id": "29bd07b7e17a2420",
+    "type": "delay",
+    "z": "d4704bfb1d2ff542",
+    "name": "",
+    "pauseType": "delay",
+    "timeout": "10",
+    "timeoutUnits": "minutes",
+    "rate": "1",
+    "nbRateUnits": "1",
+    "rateUnits": "second",
+    "randomFirst": "1",
+    "randomLast": "5",
+    "randomUnits": "seconds",
+    "drop": false,
+    "allowrate": false,
+    "x": 1170,
+    "y": 680,
+    "wires": [
+      [
+        "26aa9890e074b014"
+      ]
+    ]
+  },
+  {
+    "id": "26aa9890e074b014",
+    "type": "api-call-service",
+    "z": "d4704bfb1d2ff542",
+    "name": "",
+    "server": "8736b48c.d62a68",
+    "version": 3,
+    "debugenabled": false,
+    "service_domain": "input_boolean",
+    "service": "turn_off",
+    "entityId": "input_boolean.cameramotion1",
+    "data": "",
+    "dataType": "jsonata",
+    "mergecontext": "",
+    "mustacheAltTags": false,
+    "outputProperties": [],
+    "queue": "none",
+    "x": 1420,
+    "y": 680,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "48d55b2cf0309951",
+    "type": "api-call-service",
+    "z": "d4704bfb1d2ff542",
+    "name": "",
+    "server": "8736b48c.d62a68",
+    "version": 3,
+    "debugenabled": false,
+    "service_domain": "input_boolean",
+    "service": "turn_off",
+    "entityId": "input_boolean.cameramotion2",
+    "data": "",
+    "dataType": "jsonata",
+    "mergecontext": "",
+    "mustacheAltTags": false,
+    "outputProperties": [],
+    "queue": "none",
+    "x": 1420,
+    "y": 720,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "d85d33990db3a442",
+    "type": "delay",
+    "z": "d4704bfb1d2ff542",
+    "name": "",
+    "pauseType": "delay",
+    "timeout": "10",
+    "timeoutUnits": "minutes",
+    "rate": "1",
+    "nbRateUnits": "1",
+    "rateUnits": "second",
+    "randomFirst": "1",
+    "randomLast": "5",
+    "randomUnits": "seconds",
+    "drop": false,
+    "allowrate": false,
+    "x": 1170,
+    "y": 720,
+    "wires": [
+      [
+        "48d55b2cf0309951"
+      ]
+    ]
+  },
+  {
+    "id": "8736b48c.d62a68",
+    "type": "server",
+    "name": "Home Assistant",
+    "version": 1,
+    "addon": true,
+    "rejectUnauthorizedCerts": true,
+    "ha_boolean": "y|yes|true|on|home|open",
+    "connectionDelay": true,
+    "cacheJson": true
+  }
+]
