@@ -16,13 +16,13 @@ I developed the arduino code with MQTT integration to get/control the whole thin
 *   jump wires
 
 ## Configuration : 
-Edit the WIFI inside the home_wifi_multi.h file
-Edit the MQTT credentials on line 418 // ------------ MQTT ------------
-Edit then the MQTT topics to match your needs.
+Edit the WIFI inside the home_wifi_multi.h file  
+Edit the MQTT credentials on line 418 // ------------ MQTT ------------  
+Edit then the MQTT topics to match your needs.  
 
-Edit the servo pinout on line 383 // ------------ SERVOS ------------
-Edit the DHT pinout on line 403 // ------------ DHT ------------
-Upload the code on your ESP.
+Edit the servo pinout on line 383 // ------------ SERVOS ------------  
+Edit the DHT pinout on line 403 // ------------ DHT ------------  
+Upload the code on your ESP.  
 
 Home assistant [Tutorial and informations on my website](https://www.paulmagnier.fr/station-motorisee-pour-esp32cam/)
 
